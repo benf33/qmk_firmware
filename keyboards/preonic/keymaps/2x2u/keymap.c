@@ -27,8 +27,7 @@ void eeconfig_init_user(void) {  // EEPROM is getting reset!
   // use the non noeeprom versions, to write these values to EEPROM too
   rgblight_enable(); // Enable RGB by default
   rgblight_setrgb(RGB_WHITE);
-  //rgblight_sethsv_white();  // Set it to white by default
-  rgblight_mode(RGB_MODE_PLAIN); // set to breathing by default
+  rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT); // set to breathing by default
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -38,16 +37,19 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     // White
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_WHITE);
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
     break;
   case 1:
     // Blue
     rgblight_enable_noeeprom(); 
     rgblight_sethsv_noeeprom(HSV_BLUE);
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
     break;
   case 2:
     // Red
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_RED);
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
     break;
   default:
     // White
@@ -56,6 +58,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     //If enabled, set white
     if (rgblight_config.enable) {
     rgblight_sethsv_noeeprom(HSV_WHITE);
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
   } else { //Otherwise go back to disabled
     rgblight_disable_noeeprom();
   }
