@@ -26,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void eeconfig_init_user(void) {  // EEPROM is getting reset!
   // use the non noeeprom versions, to write these values to EEPROM too
   rgblight_enable(); // Enable RGB by default
-  rgblight_setrgb(RGB_WHITE); // White by default
+  rgblight_setrgb(RGB_BLACK); // Off by default
   rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT); // Set to static backlight (plain) by default
 }
 
@@ -34,9 +34,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   rgblight_config_t rgblight_config;
   switch(biton32(state)) {
   case 0:
-    // White
+    // Off
     rgblight_enable_noeeprom();
-    rgblight_sethsv_noeeprom(HSV_WHITE);
+    rgblight_sethsv_noeeprom(HSV_BLACK);
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
     break;
   case 1:
